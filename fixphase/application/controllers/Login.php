@@ -32,10 +32,10 @@ class Login extends CI_Controller{
   }
 
     /**
-     *This function is used to validate the user/pass from the login field
-     * it is called from login view
+     *@desc This function is used to validate the user/pass from the login field
+     *      it is called from login view
      *
-     * Author : Moataz M. Farid
+     * @author : Moataz M. Farid
      */
   public function validate(){
 //     load librarries , models
@@ -106,8 +106,8 @@ class Login extends CI_Controller{
   }
 
     /**
-     *This is a basic logout function it just destroy complete session
-     * author : Moataz M Farid
+     *@desc This is a basic logout function it just destroy complete session
+     *@author : Moataz M Farid
      */
     function logout(){
         $this->session->sess_destroy();
@@ -120,6 +120,129 @@ class Login extends CI_Controller{
   //inputs to varify it is working probably
   //and print the error message if present
   //<===========WORK==========>
+    /**
+     * @desc this function used to test the following functions
+     *          isEmail
+     *          with @param input = email
+     *          isUsername
+     *          with @param input = pass
+     *          logging
+     *          with @param input  = user
+     *          with @param input1 = email
+     *          with @param input2 = pass
+     * @author Moataz M Farid
+     */
+    function testLogin(){
+        $this->load->model('user_model');
 
+        //TestCase #1 using email
+        //test isEmail function
+
+        $input = "moatazMahmoudFarid@gmail.com";
+        $expected_out = false;
+        echo"TestCase #1 using email <br><br>";
+        echo "expected_out = false <br>";
+        $actual_out = $this->user_model->isemail($input);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+
+        //TestCase #2 using email
+        //test isEmail function
+
+        $input = "moatazmfarid@gmail.com";
+        $expected_out = true;
+        echo"TestCase #2 using email <br><br>";
+        echo "expected_out = true <br>";
+        $actual_out = $this->user_model->isemail($input);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+
+        //TestCase #3 using username
+        //test isusername function
+
+        $input = "admin";
+        $expected_out = true;
+        echo"TestCase #3 using username <br><br>";
+        echo "expected_out = true <br>";
+        $actual_out = $this->user_model->isusername($input);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+
+        //TestCase #4 using username
+        //test isusername function
+
+        $input = "moataz";
+        $expected_out = false;
+        echo"TestCase #4 using username <br><br>";
+        echo "expected_out = false <br>";
+        $actual_out = $this->user_model->isusername($input);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+
+        //TestCase #5 using user/pass
+        //test logging function
+
+        $input1 = "moatazmfarid@gmail.com";
+        $input2 = "dkjhjk";
+        $expected_out = false;
+        echo"TestCase #5 using user/pass <br><br>";
+
+        echo "expected_out = false <br>";
+        $actual_out = $this->user_model->logging($input1,null,$input2);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+        //TestCase #6 using user/pass
+        //test logging function
+
+        $input1 = "admin";
+        $input2 = "adminadmin";
+        $expected_out = true;
+        echo"TestCase #6 using user/pass <br><br>";
+
+        echo "expected_out = true <br>";
+        $actual_out = $this->user_model->logging($input1,null,$input2);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+        //TestCase #7 using email/pass
+        //test logging function
+
+        $input1 = "moatazmfarid@gmail.com";
+        $input2 = "dkjhjk";
+        $expected_out = false;
+        echo"TestCase #7 using email/pass <br><br>";
+
+        echo "expected_out = false <br>";
+        $actual_out = $this->user_model->logging(null,$input1,$input2);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+        //TestCase #8 using email/pass
+        //test logging function
+
+        $input1 = "moatazmfarid@gmail.com";
+        $input2 = "adminadmin";
+        $expected_out = true;
+        echo"TestCase #8 using email/pass <br>";
+
+        echo "expected_out = true <br>";
+        $actual_out = $this->user_model->logging(null,$input1,$input2);
+        echo 'Actual Output : ';
+        var_dump($actual_out);
+        echo"<br><br>---------------------------------------------------------------------- <br><br>";
+        echo '<br>';
+    }
 
 }

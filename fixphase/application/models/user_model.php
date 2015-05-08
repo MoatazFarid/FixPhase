@@ -47,7 +47,7 @@ class user_model extends CI_Model{
      * This Function used to check is email exists in db
      * @param $email
      * @return bool
-         * Author : Moataz M. Farid
+     * @author : Moataz M. Farid
      */
     public function isemail($email){
         $email = strtolower ($email);
@@ -63,7 +63,7 @@ class user_model extends CI_Model{
      * This Function used to check is username exists in db
      * @param $user
      * @return bool
-     * Author : Moataz M. Farid
+     * @author : Moataz M. Farid
      */
     public function isusername($user){
         $user = strtolower ($user);
@@ -83,7 +83,7 @@ class user_model extends CI_Model{
      * @param $email
      * @param $password
      * @return bool
-     * Author : Moataz M. Farid
+     * @author : Moataz M. Farid
      */
     public function logging($user,$email,$password){
         $user = strtolower ($user);
@@ -105,9 +105,9 @@ class user_model extends CI_Model{
                 // user exists and
                 return true;
             }
-        }else{
-            return false;
         }
+            return false;
+
     }
 
 #    public function insert_user()
